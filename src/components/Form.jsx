@@ -12,6 +12,7 @@ const validateForm = (values) => {
     const errors = {};
     const letters = /^[A-Za-z]+$/;
     const phoneNo = /^([0-9]{12})$/;
+    const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if (!values.name) {
         errors.name = 'Name is required';
@@ -21,7 +22,7 @@ const validateForm = (values) => {
 
     if (!values.email) {
         errors.email = 'Email is required';
-    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
+    } else if (!emailReg.test(values.email)) {
         errors.email = 'Invalid email format';
     }
 
